@@ -15,7 +15,7 @@ import java.time.LocalTime;
 public class RadnoVrijeme {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private LocalTime pocetak;
     private LocalTime kraj;
     @Enumerated(EnumType.STRING)

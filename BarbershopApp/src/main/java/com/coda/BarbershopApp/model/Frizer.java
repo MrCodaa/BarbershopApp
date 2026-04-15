@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class Frizer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String ime;
     private String prezime;
     @Enumerated(EnumType.STRING)

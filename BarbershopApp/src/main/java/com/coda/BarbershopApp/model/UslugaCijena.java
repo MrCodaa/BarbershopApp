@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 public class UslugaCijena {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private BigDecimal cijena;
     @ManyToOne
     @JoinColumn(name = "frizer_id",nullable = false)

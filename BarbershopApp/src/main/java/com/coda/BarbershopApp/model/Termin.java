@@ -1,5 +1,6 @@
 package com.coda.BarbershopApp.model;
 
+import com.coda.BarbershopApp.enums.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,4 +24,6 @@ public class Termin {
     @ManyToOne
     @JoinColumn(name = "usluga_cijena_id",nullable = false)
     private UslugaCijena uslugaCijena;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 }

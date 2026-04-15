@@ -17,7 +17,7 @@ import java.time.LocalTime;
 public class Usluga {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String naziv;
-    private int trajanje;
+    private Integer trajanje;
 }
