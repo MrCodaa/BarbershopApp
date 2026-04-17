@@ -18,12 +18,15 @@ public class Termin {
     private int id;
     private LocalDateTime datumPocetak;
     private LocalDateTime datumKraj;
+    @Enumerated(EnumType.STRING)
+    private Status status;
     @ManyToOne
     @JoinColumn(name = "korisnik_id",nullable = false)
     private Korisnik korisnik;
     @ManyToOne
-    @JoinColumn(name = "usluga_cijena_id",nullable = false)
-    private UslugaCijena uslugaCijena;
-    @Enumerated(EnumType.STRING)
-    private Status status;
+    @JoinColumn(name = "frizer_id",nullable = false)
+    private Frizer frizer;
+    @ManyToOne
+    @JoinColumn(name = "zvanjeUslugaCijena_id",nullable = false)
+    private ZvanjeUslugaCijena zvanjeUslugaCijena;
 }

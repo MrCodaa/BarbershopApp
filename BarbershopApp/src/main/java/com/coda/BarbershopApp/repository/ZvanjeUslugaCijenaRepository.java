@@ -1,9 +1,9 @@
 package com.coda.BarbershopApp.repository;
 
-import com.coda.BarbershopApp.model.UslugaCijena;
+import com.coda.BarbershopApp.model.ZvanjeUslugaCijena;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UslugaCijenaRepository extends JpaRepository<UslugaCijena,Integer> {
+public interface ZvanjeUslugaCijenaRepository extends JpaRepository<ZvanjeUslugaCijena,Integer> {
 }

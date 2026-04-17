@@ -1,6 +1,6 @@
 package com.coda.BarbershopApp.model;
 
-import com.coda.BarbershopApp.enums.Zvanje;
+import com.coda.BarbershopApp.enums.ZvanjeNaziv;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,7 +16,8 @@ public class Frizer {
     private Integer id;
     private String ime;
     private String prezime;
-    @Enumerated(EnumType.STRING)
+    @ManyToOne
+    @JoinColumn(name = "zvanje_id")
     private Zvanje zvanje;
     private String slikaUrl;
 

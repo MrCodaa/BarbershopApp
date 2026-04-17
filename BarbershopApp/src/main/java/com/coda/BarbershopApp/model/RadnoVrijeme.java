@@ -20,4 +20,7 @@ public class RadnoVrijeme {
     private LocalTime kraj;
     @Enumerated(EnumType.STRING)
     private DanUSedmici dan;
+    @ManyToOne
+    @JoinColumn(name = "frizer_id")
+    private Frizer frizer;
 }

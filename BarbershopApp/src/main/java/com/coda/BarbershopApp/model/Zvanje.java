@@ -1,6 +1,6 @@
 package com.coda.BarbershopApp.model;
 
-import com.coda.BarbershopApp.enums.Uloga;
+import com.coda.BarbershopApp.enums.ZvanjeNaziv;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,14 +10,11 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Korisnik {
+public class Zvanje {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String ime;
-    private String prezime;
-    private String email;
-    private String sifra;
     @Enumerated(EnumType.STRING)
-    private Uloga uloga;
+    @Column(name = "naziv")
+    private ZvanjeNaziv zvanjeNaziv;
 }

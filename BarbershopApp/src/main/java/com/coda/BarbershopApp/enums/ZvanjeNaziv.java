@@ -1,5 +1,5 @@
 package com.coda.BarbershopApp.enums;
 
-public enum Zvanje {
+public enum ZvanjeNaziv {
     JUNIOR,MEDIOR,SENIOR;
 }
