@@ -12,6 +12,7 @@ import java.time.LocalTime;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"frizer_id", "dan"})})
 public class RadnoVrijeme {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

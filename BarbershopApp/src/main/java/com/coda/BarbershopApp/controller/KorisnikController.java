@@ -26,7 +26,7 @@ public class KorisnikController {
     @GetMapping("/frizeri")
     public ResponseEntity<?> prikaziFrizere(){
         List<Frizer> frizeri = frizerService.vratiSveFrizere();
-        if(!(frizeri.isEmpty())){
+        if(frizeri.isEmpty()){
             return new ResponseEntity<>("Ne postoje frizeri", HttpStatus.NOT_FOUND);
         }else{
             return new ResponseEntity<>(frizeri, HttpStatus.OK);
@@ -36,7 +36,7 @@ public class KorisnikController {
     @GetMapping("/frizeri/{id}/usluge")
     public ResponseEntity<?> vratiUslugeSaCijenom(@PathVariable int id){
         List<ZvanjeUslugaCijena> uslugeSaCijenom = zvanjeUslugaCijenaService.vratiUslugeSaCijenom(id);
-        if(uslugeSaCijenom != null) {
+        if(!uslugeSaCijenom.isEmpty()) {
             return new ResponseEntity<>(uslugeSaCijenom, HttpStatus.OK);
         }else{
             return new ResponseEntity<>("Ne postoje usluge", HttpStatus.NOT_FOUND);

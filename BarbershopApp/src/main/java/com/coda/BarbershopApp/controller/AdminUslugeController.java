@@ -18,10 +18,10 @@ public class AdminUslugeController {
     @GetMapping("/admin/usluge")
     public ResponseEntity<?> vratiUsluge(){
         List<Usluga> usluge = uslugeService.vratiUsluge();
-        if(usluge != null) {
+        if(!usluge.isEmpty()) {
             return new ResponseEntity<>(usluge, HttpStatus.OK);
         }else{
-            return new ResponseEntity<>("Ne postoji radno vrijeme", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Ne postoje usluge", HttpStatus.NOT_FOUND);
         }
 
     }
@@ -32,7 +32,7 @@ public class AdminUslugeController {
             uslugeService.dodajUslugu(usluga);
             return new ResponseEntity<>("Uspjesno", HttpStatus.OK);
         }catch (Exception e){
-            return new ResponseEntity<>("Neuspjesno", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Neuspjesno", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }
@@ -43,7 +43,7 @@ public class AdminUslugeController {
             uslugeService.obrisiUslugu(id);
             return new ResponseEntity<>("Uspjesno", HttpStatus.OK);
         }catch (Exception e){
-            return new ResponseEntity<>("Neuspjesno", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Neuspjesno", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -54,7 +54,7 @@ public class AdminUslugeController {
             uslugeService.promijeniUslugu(usluga);
             return new ResponseEntity<>("Uspjesno", HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>("Neuspjesno", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Neuspjesno", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

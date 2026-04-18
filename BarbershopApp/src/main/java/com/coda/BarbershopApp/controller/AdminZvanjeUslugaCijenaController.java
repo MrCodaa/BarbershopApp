@@ -18,7 +18,7 @@ public class AdminZvanjeUslugaCijenaController {
     public ResponseEntity<?> vratiZvanjeUslugeCijena(){
         List<ZvanjeUslugaCijena> zvanjeUslugeCijena = zvanjeUslugeCijenaService.vratiZvanjeUslugeCijena();
         if(zvanjeUslugeCijena.isEmpty()) {
-            return new ResponseEntity<>("Ne postoji radno vrijeme", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Ne postoje zvanje usluge cijene", HttpStatus.NOT_FOUND);
         }else{
             return new ResponseEntity<>(zvanjeUslugeCijena, HttpStatus.OK);
         }
@@ -31,7 +31,7 @@ public class AdminZvanjeUslugaCijenaController {
             zvanjeUslugeCijenaService.dodajZvanjeUsluguCijena(uslugaCijena);
             return new ResponseEntity<>("Uspjesno", HttpStatus.OK);
         }catch (Exception e){
-            return new ResponseEntity<>("Neuspjesno", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Neuspjesno", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }
@@ -42,7 +42,7 @@ public class AdminZvanjeUslugaCijenaController {
             zvanjeUslugeCijenaService.obrisiZvanjeUsluguCijena(id);
             return new ResponseEntity<>("Uspjesno", HttpStatus.OK);
         }catch (Exception e){
-            return new ResponseEntity<>("Neuspjesno", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Neuspjesno", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -53,7 +53,7 @@ public class AdminZvanjeUslugaCijenaController {
             zvanjeUslugeCijenaService.promijeniZvanjeUsluguCijena(zvanjeUslugaCijena);
             return new ResponseEntity<>("Uspjesno", HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>("Neuspjesno", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Neuspjesno", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

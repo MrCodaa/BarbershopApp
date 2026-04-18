@@ -18,7 +18,7 @@ public class AdminRadnoVrijemeController {
     @GetMapping("/admin/radno_vrijeme")
     public ResponseEntity<?> vratiRadnoVrijeme(){
         List<RadnoVrijeme> radnoVrijeme = radnoVrijemeService.vratiRadnoVrijeme();
-        if(radnoVrijeme != null) {
+        if(!radnoVrijeme.isEmpty()) {
             return new ResponseEntity<>(radnoVrijeme, HttpStatus.OK);
         }else{
             return new ResponseEntity<>("Ne postoji radno vrijeme", HttpStatus.NOT_FOUND);
@@ -32,7 +32,7 @@ public class AdminRadnoVrijemeController {
             radnoVrijemeService.dodajRadnoVrijeme(radnoVrijeme);
             return new ResponseEntity<>("Uspjesno", HttpStatus.OK);
         }catch (Exception e){
-            return new ResponseEntity<>("Neuspjesno", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Neuspjesno", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }
@@ -43,7 +43,7 @@ public class AdminRadnoVrijemeController {
             radnoVrijemeService.obrisiRadnoVrijeme(id);
             return new ResponseEntity<>("Uspjesno", HttpStatus.OK);
         }catch (Exception e){
-            return new ResponseEntity<>("Neuspjesno", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Neuspjesno", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -54,7 +54,7 @@ public class AdminRadnoVrijemeController {
             radnoVrijemeService.promijeniRadnoVrijeme(radnoVrijeme);
             return new ResponseEntity<>("Uspjesno", HttpStatus.OK);
         }catch (Exception e){
-            return new ResponseEntity<>("Neuspjesno", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Neuspjesno", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

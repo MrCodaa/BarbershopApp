@@ -12,6 +12,7 @@ import com.coda.BarbershopApp.repository.ZvanjeUslugaCijenaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -34,6 +35,9 @@ public class TerminService {
     }
 
     public void zakaziTermin(TerminDTO terminDTO){
+        if(terminDTO.getDatumPocetak().isBefore(LocalDateTime.now())) {
+            throw new RuntimeException("Ne mozete zakazati termin u proslosti");
+        }
         boolean zauzetTermin = repo.existsByFrizerIdAndDatumPocetakAndStatus(
                 terminDTO.getFrizerId(),
                 terminDTO.getDatumPocetak(),

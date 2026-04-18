@@ -18,10 +18,10 @@ public class AdminTerminController {
     @GetMapping("/admin/termini")
     public ResponseEntity<?> vratiTermine(){
         List<Termin> termini = terminService.vratiTermine();
-        if(termini != null) {
+        if(!termini.isEmpty()) {
             return new ResponseEntity<>(termini, HttpStatus.OK);
         }else{
-            return new ResponseEntity<>("Ne postoji radno vrijeme", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Ne postoje termini", HttpStatus.NOT_FOUND);
         }
 
     }
@@ -32,7 +32,7 @@ public class AdminTerminController {
             terminService.otkaziTermin(id);
             return new ResponseEntity<>("Uspjesno", HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>("Neuspjesno", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Neuspjesno", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

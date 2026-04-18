@@ -21,14 +21,14 @@ public class AdminFrizerController {
             frizerService.dodajFrizera(frizer);
             return new ResponseEntity<>("Uspjesno dodat!", HttpStatus.OK);
         }else{
-            return new ResponseEntity<>("Neuspjesno dodat!", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Neuspjesno dodat!", HttpStatus.BAD_REQUEST);
         }
     }
 
     @GetMapping("/admin/frizeri")
     public ResponseEntity<?> prikaziFrizere(){
         List<Frizer> frizeri = frizerService.vratiSveFrizere();
-        if(frizeri == null){
+        if(frizeri.isEmpty()){
             return new ResponseEntity<>("Ne postoje frizeri", HttpStatus.NOT_FOUND);
         }else{
             return new ResponseEntity<>(frizeri, HttpStatus.OK);
@@ -54,7 +54,7 @@ public class AdminFrizerController {
             frizerService.promijeniFrizera(frizer);
             return new ResponseEntity<>("Uspjesno promijenjen!", HttpStatus.OK);
         }catch(Exception e) {
-            return new ResponseEntity<>("Neuspjesno promijenjen!", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Neuspjesno promijenjen!", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
