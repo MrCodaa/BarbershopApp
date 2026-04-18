@@ -1,6 +1,9 @@
 package com.coda.BarbershopApp.repository;
 
+import com.coda.BarbershopApp.enums.Status;
 import com.coda.BarbershopApp.model.Termin;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -18,4 +21,6 @@ public interface TerminRepository extends JpaRepository<Termin,Integer> {
     void otkaziTermin(int id);
 
     List<Termin> findByFrizerIdAndDatumPocetakBetween(int id, LocalDateTime pocetak, LocalDateTime kraj);
+
+    boolean existsByFrizerIdAndDatumPocetakAndStatus(int frizerId, LocalDateTime datumPocetak, Status status);
 }

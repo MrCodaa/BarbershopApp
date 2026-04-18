@@ -1,13 +1,8 @@
 package com.coda.BarbershopApp.controller;
 
-import com.coda.BarbershopApp.model.Frizer;
-import com.coda.BarbershopApp.model.Slot;
-import com.coda.BarbershopApp.model.Usluga;
-import com.coda.BarbershopApp.model.ZvanjeUslugaCijena;
-import com.coda.BarbershopApp.service.FrizerService;
-import com.coda.BarbershopApp.service.SlotService;
-import com.coda.BarbershopApp.service.UslugeService;
-import com.coda.BarbershopApp.service.ZvanjeUslugaCijenaService;
+import com.coda.BarbershopApp.model.*;
+import com.coda.BarbershopApp.service.*;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,11 +20,13 @@ public class KorisnikController {
     ZvanjeUslugaCijenaService zvanjeUslugaCijenaService;
     @Autowired
     SlotService slotService;
+    @Autowired
+    TerminService terminService;
 
     @GetMapping("/frizeri")
     public ResponseEntity<?> prikaziFrizere(){
         List<Frizer> frizeri = frizerService.vratiSveFrizere();
-        if(frizeri == null){
+        if(!(frizeri.isEmpty())){
             return new ResponseEntity<>("Ne postoje frizeri", HttpStatus.NOT_FOUND);
         }else{
             return new ResponseEntity<>(frizeri, HttpStatus.OK);
@@ -42,7 +39,7 @@ public class KorisnikController {
         if(uslugeSaCijenom != null) {
             return new ResponseEntity<>(uslugeSaCijenom, HttpStatus.OK);
         }else{
-            return new ResponseEntity<>("Ne postoji radno vrijeme", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Ne postoje usluge", HttpStatus.NOT_FOUND);
         }
 
     }
@@ -55,6 +52,12 @@ public class KorisnikController {
         }else{
             return new ResponseEntity<>(slobodniSlotovi, HttpStatus.OK);
         }
+    }
+
+    @PostMapping("/slobodniTermini/zakaziTermin")
+    public ResponseEntity<String> zakaziTermin(@RequestBody @Valid TerminDTO terminDTO ){
+        terminService.zakaziTermin(terminDTO);
+        return new ResponseEntity<>("Termin uspjesno zakazan", HttpStatus.OK);
     }
 
 

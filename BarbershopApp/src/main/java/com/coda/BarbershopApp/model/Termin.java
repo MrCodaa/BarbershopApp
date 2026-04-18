@@ -1,6 +1,7 @@
 package com.coda.BarbershopApp.model;
 
 import com.coda.BarbershopApp.enums.Status;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,6 +17,7 @@ public class Termin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime datumPocetak;
     @Enumerated(EnumType.STRING)
     private Status status;
