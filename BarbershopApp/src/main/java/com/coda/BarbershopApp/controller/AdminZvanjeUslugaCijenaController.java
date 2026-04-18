@@ -14,7 +14,7 @@ public class AdminZvanjeUslugaCijenaController {
     @Autowired
     ZvanjeUslugaCijenaService zvanjeUslugeCijenaService;
 
-    @GetMapping("/zvanjeUslugeCijena")
+    @GetMapping("/admin/zvanjeUslugeCijena")
     public ResponseEntity<?> vratiZvanjeUslugeCijena(){
         List<ZvanjeUslugaCijena> zvanjeUslugeCijena = zvanjeUslugeCijenaService.vratiZvanjeUslugeCijena();
         if(zvanjeUslugeCijena.isEmpty()) {
@@ -25,7 +25,7 @@ public class AdminZvanjeUslugaCijenaController {
 
     }
 
-    @PostMapping("/zvanjeUslugeCijena")
+    @PostMapping("/admin/zvanjeUslugeCijena")
     public ResponseEntity<String> dodajZvanjeUsluguCijena(@RequestBody ZvanjeUslugaCijena uslugaCijena){
         try {
             zvanjeUslugeCijenaService.dodajZvanjeUsluguCijena(uslugaCijena);
@@ -36,7 +36,7 @@ public class AdminZvanjeUslugaCijenaController {
 
     }
 
-    @DeleteMapping("/zvanjeUslugeCijena/{id}")
+    @DeleteMapping("/admin/zvanjeUslugeCijena/{id}")
     public ResponseEntity<String> obrisiUsluguCijena(@PathVariable int id){
         try {
             zvanjeUslugeCijenaService.obrisiZvanjeUsluguCijena(id);
@@ -46,7 +46,7 @@ public class AdminZvanjeUslugaCijenaController {
         }
     }
 
-    @PutMapping("/zvanjeUslugeCijena/{id}")
+    @PutMapping("/admin/zvanjeUslugeCijena/{id}")
     public ResponseEntity<String> promijeniUsluguCijena(@PathVariable int id, @RequestBody ZvanjeUslugaCijena zvanjeUslugaCijena) {
         try {
             zvanjeUslugaCijena.setId(id);

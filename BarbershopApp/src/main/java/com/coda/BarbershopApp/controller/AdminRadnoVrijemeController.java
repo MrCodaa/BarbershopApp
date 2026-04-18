@@ -15,7 +15,7 @@ public class AdminRadnoVrijemeController {
     @Autowired
     RadnoVrijemeService radnoVrijemeService;
 
-    @GetMapping("/radno_vrijeme")
+    @GetMapping("/admin/radno_vrijeme")
     public ResponseEntity<?> vratiRadnoVrijeme(){
         List<RadnoVrijeme> radnoVrijeme = radnoVrijemeService.vratiRadnoVrijeme();
         if(radnoVrijeme != null) {
@@ -26,7 +26,7 @@ public class AdminRadnoVrijemeController {
 
     }
 
-    @PostMapping("/radno_vrijeme")
+    @PostMapping("/admin/radno_vrijeme")
     public ResponseEntity<String> dodajRadnoVrijeme(@RequestBody RadnoVrijeme radnoVrijeme){
         try {
             radnoVrijemeService.dodajRadnoVrijeme(radnoVrijeme);
@@ -37,7 +37,7 @@ public class AdminRadnoVrijemeController {
 
     }
 
-    @DeleteMapping("/radno_vrijeme/{id}")
+    @DeleteMapping("/admin/radno_vrijeme/{id}")
     public ResponseEntity<String> obrisiRadnoVrijeme(@PathVariable int id){
         try {
             radnoVrijemeService.obrisiRadnoVrijeme(id);
@@ -47,7 +47,7 @@ public class AdminRadnoVrijemeController {
         }
     }
 
-    @PutMapping("/radno_vrijeme/{id}")
+    @PutMapping("/admin/radno_vrijeme/{id}")
     public ResponseEntity<String> promijeniRadnoVrijeme(@PathVariable int id, @RequestBody RadnoVrijeme radnoVrijeme){
         try {
             radnoVrijeme.setId(id);

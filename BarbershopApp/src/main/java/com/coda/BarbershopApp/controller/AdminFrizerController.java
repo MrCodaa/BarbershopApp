@@ -15,7 +15,7 @@ public class AdminFrizerController {
     @Autowired
     FrizerService frizerService;
 
-    @PostMapping("/frizeri")
+    @PostMapping("/admin/frizeri")
     public ResponseEntity<String> dodajFrizera(@RequestBody Frizer frizer){
         if(frizer != null) {
             frizerService.dodajFrizera(frizer);
@@ -25,7 +25,7 @@ public class AdminFrizerController {
         }
     }
 
-    @GetMapping("/frizeri")
+    @GetMapping("/admin/frizeri")
     public ResponseEntity<?> prikaziFrizere(){
         List<Frizer> frizeri = frizerService.vratiSveFrizere();
         if(frizeri == null){
@@ -36,7 +36,7 @@ public class AdminFrizerController {
 
     }
 
-    @DeleteMapping("/frizeri/{id}")
+    @DeleteMapping("/admin/frizeri/{id}")
     public ResponseEntity<String> obrisiFrizera(@PathVariable int id){
         try{
             frizerService.obrisiFrizera(id);
@@ -47,7 +47,7 @@ public class AdminFrizerController {
 
     }
 
-    @PutMapping("/frizeri/{id}")
+    @PutMapping("/admin/frizeri/{id}")
     public ResponseEntity<String> promijeniFrizera(@PathVariable int id ,@RequestBody Frizer frizer){
         try{
             frizer.setId(id);

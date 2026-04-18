@@ -6,6 +6,9 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Repository
 public interface TerminRepository extends JpaRepository<Termin,Integer> {
 
@@ -14,4 +17,5 @@ public interface TerminRepository extends JpaRepository<Termin,Integer> {
     @Query("UPDATE Termin t SET t.status = 'OTKAZAN' WHERE t.id = :id")
     void otkaziTermin(int id);
 
+    List<Termin> findByFrizerIdAndDatumPocetakBetween(int id, LocalDateTime pocetak, LocalDateTime kraj);
 }

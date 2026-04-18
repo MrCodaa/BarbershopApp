@@ -15,7 +15,7 @@ public class AdminTerminController {
     @Autowired
     TerminService terminService;
 
-    @GetMapping("/termini")
+    @GetMapping("/admin/termini")
     public ResponseEntity<?> vratiTermine(){
         List<Termin> termini = terminService.vratiTermine();
         if(termini != null) {
@@ -26,7 +26,7 @@ public class AdminTerminController {
 
     }
 
-    @PutMapping("/termini/{id}")
+    @PutMapping("/admin/termini/{id}")
     public ResponseEntity<String> otkaziTermin(@PathVariable int id) {
         try {
             terminService.otkaziTermin(id);

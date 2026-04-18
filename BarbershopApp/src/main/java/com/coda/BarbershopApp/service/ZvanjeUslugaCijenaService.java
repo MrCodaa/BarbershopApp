@@ -27,4 +27,8 @@ public class ZvanjeUslugaCijenaService {
     public void promijeniZvanjeUsluguCijena(ZvanjeUslugaCijena zvanjeUslugaCijena) {
         repo.save(zvanjeUslugaCijena);
     }
+
+    public List<ZvanjeUslugaCijena> vratiUslugeSaCijenom(int id) {
+        return repo.vratiUslugeSaCijenom(id);
+    }
 }

@@ -15,7 +15,7 @@ public class AdminUslugeController {
     @Autowired
     UslugeService uslugeService;
 
-    @GetMapping("/usluge")
+    @GetMapping("/admin/usluge")
     public ResponseEntity<?> vratiUsluge(){
         List<Usluga> usluge = uslugeService.vratiUsluge();
         if(usluge != null) {
@@ -26,7 +26,7 @@ public class AdminUslugeController {
 
     }
 
-    @PostMapping("/usluge")
+    @PostMapping("/admin/usluge")
     public ResponseEntity<String> dodajUslugu(@RequestBody Usluga usluga){
         try {
             uslugeService.dodajUslugu(usluga);
@@ -37,7 +37,7 @@ public class AdminUslugeController {
 
     }
 
-    @DeleteMapping("/usluge/{id}")
+    @DeleteMapping("/admin/usluge/{id}")
     public ResponseEntity<String> obrisiUslugu(@PathVariable int id){
         try {
             uslugeService.obrisiUslugu(id);
@@ -47,7 +47,7 @@ public class AdminUslugeController {
         }
     }
 
-    @PutMapping("/usluge/{id}")
+    @PutMapping("/admin/usluge/{id}")
     public ResponseEntity<String> promijeniUslugu(@PathVariable int id, @RequestBody Usluga usluga) {
         try {
             usluga.setId(id);

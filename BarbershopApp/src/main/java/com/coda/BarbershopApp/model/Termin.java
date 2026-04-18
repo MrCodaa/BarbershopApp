@@ -17,7 +17,6 @@ public class Termin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private LocalDateTime datumPocetak;
-    private LocalDateTime datumKraj;
     @Enumerated(EnumType.STRING)
     private Status status;
     @ManyToOne
