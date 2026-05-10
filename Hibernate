@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+    <session-factory>
+        <!-- JDBC konekcija -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property> <!-- Za MySQL 8 -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/njt_hibernate</property> <!-- baza -->
+        <property name="hibernate.connection.username">root</property> <!-- Korisničko ime za bazu -->
+        <property name="hibernate.connection.password">root</property> <!-- Lozinka za bazu -->
+
+        <property name = "hibernate.show_sql">true</property>
+        <property name = "hibernate.format_sql">true</property>
+
+        <mapping class = "rs.ac.bg.fon.njt.vezbe08.domain.Katedra"/>
+        <mapping class = "rs.ac.bg.fon.njt.vezbe08.domain.Predavac"/>
+        <mapping class = "rs.ac.bg.fon.njt.vezbe08.domain.Zvanje"/>
+    </session-factory>
+
+</hibernate-configuration>
+
